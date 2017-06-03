@@ -9,12 +9,15 @@ import os
 
 def ping():
     while True:
-        if os.system('ping www.baidu.com -c 5 | grep ttl') == 0:
-            login()
-            print '登录成功。。。'
+        if os.system('ping www.baidu.com -c 3 | grep ttl') == 0:
+            print logtime + '  已经登录成功。。。'
             time.sleep(1800)
         else:
-            print 'Failed...'
+            print logtime + '  没有登录，现在进行登录。。。'
+            login()
+            print logtime + '  登录成功～'
+            time.sleep(1800)
+
 
 
 def login():
