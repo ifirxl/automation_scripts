@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+日志
+{% endblock %}
+{% block body %}
+
+<div class="table-responsive">
+    <br>
+    <br>
+    <br>
+  <table class="table">
+    <caption>操作日志</caption>
+    <thead>
+      <tr>
+        <th>时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for content in contents %}
+        <td>{{ content.time }}</td>
+        <td>{{ content.option }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

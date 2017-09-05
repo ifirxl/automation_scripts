@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+目录
+{% endblock %}
+{% block body %}
+
+<div class="table-responsive">
+    <br>
+    <br>
+    <br>
+  <table class="table">
+    <caption>保留地址信息</caption>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>部门</th>
+        <th>IP</th>
+        <th>MAC</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for content in contents %}
+        <td>{{ content.username }}</td>
+        <td>{{ content.department }}</td>
+        <td>{{ content.ip }}</td>
+        <td>{{ content.mac }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
