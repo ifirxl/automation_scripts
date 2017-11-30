@@ -1,5 +1,9 @@
 #!/usr/bin/python
 # -*- coding:utf8 -*-
+"""
+作者: Kuari <www.justmylife.cc>
+环境: Debian系,Python2.7,运行时需要用到root权限
+"""
 import os
 import sys
 
@@ -14,8 +18,7 @@ except ImportError:
         sys.exit(1)
     import netifaces
 
-print ("环境: Debian系,Python2.7\n")
-    
+   
 lines = os.popen('sudo dpkg -l | grep -i nmap')
 if lines == "":
     print ('你未安装nmap,将为你安装nmap软件')
@@ -50,12 +53,6 @@ print (u"子网掩码: %s"%routingIPNetmask)
 print ("---"*10)
 
 IP = routingIPAddr + "/" + str(routingIPNetmask)
-lines = os.popen("sudo nmap -sP '%s'| grep Raspber -B 2"%IP).readlines()
-if lines == "":
+print ("正在扫描中...")
+if os.system("sudo nmap -sP '%s'| grep Raspber -B 2"%IP) != 0:
     print ("局域网内未发现树莓派信息...")
-else:
-    lines = lines.readlines()
-    print ("#"*30)
-    for line in lines:
-        print line
-    print ("#"*30) 
