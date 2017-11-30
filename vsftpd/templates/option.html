@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+操作 | FTP
+{% endblock %}
+
+{% block setitle %}
+操作页面
+{% endblock %}
+
+{% block body %}
+<div class='container'>
+<form action="{{ url_for('add_user') }}" method=post class=add_user>
+  <div class="form-group">
+    <label for="exampleInputUsername">工号</label>
+    <input type="username" class="form-control" id="jobnum" placeholder="1234" name='jobnum' required autofocus>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputUsername">昵称</label>
+    <input type="username" class="form-control" id="zh_username" placeholder="吴彦祖" name='zh_username' required autofocus>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputUsername">用户名</label>
+    <input type="username" class="form-control" id="username" placeholder="Daniel Wu" name='username' required autofocus>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">密码</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" name='password' required autofocus>
+  </div>
+  <div class="form-group">
+<label class="radio-inline">
+  <input type="radio" name="options" value="jishu" checked>技术部
+</label>
+<label class="radio-inline">
+  <input type="radio" name="options" value="yanfa">研发部
+</label>
+<label class="radio-inline">
+  <input type="radio" name="options" value="shichang">市场部
+</label>
+<label class="radio-inline">
+  <input type="radio" name="options" value="xingzheng">行政部
+</label>
+<label class="radio-inline">
+  <input type="radio" name="options" value="caiwu">财务部
+</label>
+  </div>
+  <button type="submit" class="btn btn-lg btn-primary">添加</button>
+  <div style="padding-top:20px;">
+  {% for message in get_flashed_messages() %}
+  <div class=flash><div class="alert alert-success" role="alert">{{ message }}</div></div>
+  {% endfor %}
+  </div>
+</div>
+</form>
+</div>
+{% endblock %}

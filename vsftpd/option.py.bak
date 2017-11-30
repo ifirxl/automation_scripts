@@ -1,0 +1,46 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+import sqlite3
+import os
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+from logs import Logs  
+
+
+class Option():
+
+    def __init__(self):
+        self.log = Logs()
+
+    def chpassword(self, username, password):
+        return [i.strip() for i in os.popen('echo %s | passwd % --stdin').readlines()][0]
+
+    def addUsers(self,zh_username, username ,password, department):
+#        result = [i.strip() for i in os.popen('useradd -d /var/ftp/%s -g ftp -s /sbin/nologin %s'%(username,username)).readlines()][0] 
+        result = ''
+        if result == '':
+            self.log.adduser(username, password)
+            self.log.addlog('成功添加用户 %s'%zh_username)
+            return '成功添加用户 %s'%zhusername
+        else:
+            return result
+
+if __name__ == '__main__':
+    pass
+            
+        
+ 
+
+
+        
+
+
+
+
+
+
+
+        
+
+

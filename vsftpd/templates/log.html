@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+日志 | FTP
+{% endblock %}
+
+{% block setitle %}
+日志列表
+{% endblock %}
+
+{% block body %}
+<table data-toggle="table" 
+    data-undefined-text="-" 
+    data-pagination="true" 
+    data-search="true" 
+    data-show-toggle="true" 
+    data-show-refresh="true" 
+    data-show-pagination-switch="true"
+    data-show-pagination-switch="true" 
+    data-show-columns="true" 
+    data-striped="true" 
+    >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>操作日志</th>
+            <th>时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for content in contents %}
+        <tr>
+            <td>{{ content.id }}</td>
+            <td>{{ content.options }}</td>
+            <td>{{ content.time }}</td>
+        </tr>
+        {% endfor %}
+ 
+    </tbody>
+</table>
+
+{% endblock %}

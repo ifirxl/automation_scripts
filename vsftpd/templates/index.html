@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}
+首页 | FTP
+{% endblock %}
+
+{% block num %}
+4
+{% endblock %}
+
+{% block setitle %}
+用户信息
+{% endblock %}
+
+{% block body %}
+<table data-toggle="table" 
+    data-undefined-text="-" 
+    data-pagination="true" 
+    data-search="true" 
+    data-show-toggle="true" 
+    data-show-refresh="true" 
+    data-show-pagination-switch="true"
+    data-show-columns="true" 
+    data-striped="true" 
+    >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>工号</th>
+            <th>昵称</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>所属</th>
+            <th>添加时间</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for content in contents %}
+        <tr>
+            <td>{{ content.id }}</td>
+            <td>{{ content.jobnum }}</td>
+            <td>{{ content.zh_username }}</td>
+            <td>{{ content.username }}</td>
+            <td>{{ content.password }}</td>
+            <td>{{ content.department }}</td>
+            <td>{{ content.time }}</td>
+            <td><button id={{ content.id }} class="btn btn-primary" onclick=moveto(this)>编辑</button>  <button id={{ content.id }} id="heihei2" type="button" class="btn btn-danger" onclick=remove_id(this)>删除</button></td>
+        </tr>
+        {% endfor %}
+ 
+    </tbody>
+</table>
+<script>
+function moveto(obj) {
+    var id = obj.id;
+    var thelink = 'http://127.0.0.1:5000/theuser' + id;
+    console.log(thelink);
+    window.location.href=thelink;
+}
+</script>
+
+<script type="text/javascript">
+function remove_id(obj){
+    var theid = obj.id;
+    console.log(theid);
+    
+    data = {};
+    data['status'] = 'option';
+    data['theid'] = theid; 
+    console.log(data);
+
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'json',
+        url: 'http://127.0.0.1:5000/remove',						
+        success: function(data) {
+            console.log('success');
+            window.location.href=window.location.href;
+        }
+    });
+}
+</script>
+
+
+{% endblock %}
