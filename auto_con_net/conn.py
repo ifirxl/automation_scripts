@@ -18,7 +18,6 @@ class Con:
         self.username = username
         self.password = password
 
-
     def login(self):
         headers = {
             'Host':'10.10.10.52',
@@ -46,6 +45,7 @@ class Con:
             print self.log_time + ' ---------- ' + results
         else: 
             print self.log_time + ' ---------- 连接网络'
+
 
 def Start(username, password, pattern, timeout):
     conn = Con(username, password)
@@ -75,6 +75,7 @@ def getFile(filename):
             return data
         else:
             return 'error'
+
 
 def main():
     import optparse
