@@ -55,7 +55,7 @@ def Start(username, password, pattern, timeout):
         elif pattern == '2': 
             while True:
                 conn.run()
-                time.sleep(timeout)
+                time.sleep(int(timeout))
     else:
         conn.run()
 
